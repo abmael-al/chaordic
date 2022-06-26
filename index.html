@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="stylesheet" href="src/styles/style.css">
+    
+    <title>Chaordic</title>
+  </head>
+  <body>
+    <header class="mb-4 pt-10">
+      <div class="container">
+        <h1 class="ff-SourceSansPro-SemiBold fs-700">VUTTR</h1>
+        <h2 class="ff-SourceSansPro-Regular fs-600">Very Useful Tools To Remember</h2>
+      </div>
+    </header>
+    <section class="py-6">
+      <div class="container flex space-between">
+        <div class="search-container flex items-center">
+          <div>
+            <form data-search-form class="max-w relative">
+              <input data-search-field class="search-bar px-4 max-w" id="search" type="search" placeholder="search">
+              
+              <button class="search-button absolute" type="submit">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 490.4 490.4" style="enable-background:new 0 0 490.4 490.4;" xml:space="preserve">
+                <g>
+                  <path fill="#B1ADB9" d="M484.1,454.796l-110.5-110.6c29.8-36.3,47.6-82.8,47.6-133.4c0-116.3-94.3-210.6-210.6-210.6S0,94.496,0,210.796
+                    s94.3,210.6,210.6,210.6c50.8,0,97.4-18,133.8-48l110.5,110.5c12.9,11.8,25,4.2,29.2,0C492.5,475.596,492.5,463.096,484.1,454.796z
+                    M41.1,210.796c0-93.6,75.9-169.5,169.5-169.5s169.6,75.9,169.6,169.5s-75.9,169.5-169.5,169.5S41.1,304.396,41.1,210.796z"/>
+                </g>
+                </svg>
+              </button>  
+            </form>
+          </div>
+          
+          <div>
+            <input data-checkbox id="checkbox" type="checkbox">
+            <label for="checkbox">search in tags only</label>
+          </div>
+        </div>
+        <div class="submit-container flex items-center">
+          <button data-open-submit-modal class="btn-primary-neutral flex place-center shadow rounded-sm">
+            <svg class="plus-icon-svg" width="24" height="24" viewBox="0 0 24 24">
+              <path fill="#fff" d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
+            </svg>
+            <span class="fs-300 text-light">Add</span>
+          </button>
+
+          <dialog data-submit-modal class="py-6 px-6 shadow-xl rounded bg-white dialog-show">
+            <div class="mb-5 flex space-between items-center">
+              <h3 class="submit-form-title flex items-center">
+                <svg class="plus-icon" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="#000" d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
+                </svg>
+                <span class="fs-400 text-dark">Add new tool</span>
+              </h3>
+  
+              <button data-close-submit-modal class="btn-close-submit-modal flex items-center">
+                <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div>
+              <form data-submit-form class="flex flex-column items-end no-gap" method="dialog">
+                <div class="flex flex-column no-gap mb-4">
+                  <label for="title" class="mb-1">Name</label>
+                  <input class="submit-form-input px-4 rounded-sm" id="title" type="text" placeholder="Tool's name" required>
+                </div>
+
+                <div class="flex flex-column no-gap mb-4">
+                  <label for="link" class="mb-1 fs-300 text-dark">Link</label>
+                  <input class="submit-form-input px-4 rounded-sm" id="link" type="url" placeholder="Link to the tool" required>
+                </div>
+
+                <div class="flex flex-column no-gap mb-4">
+                  <label for="description" class="mb-1 fs-300 text-dark">Description</label>
+                  <input class="submit-form-input px-4 rounded-sm" id="description" type="text" placeholder="A short description about the tool" required>
+                </div>
+
+                <div class="flex flex-column no-gap">
+                  <label for="tags" class="mb-1 fs-300 text-dark">Tags</label>
+                  <input class="submit-form-input px-4 rounded-sm" id="tags" type="text" placeholder="Topics that the tool is related with" required>
+                </div>
+
+                <button class="btn-primary-neutral mt-6 shadow rounded-sm" type="submit">
+                  <span class="fs-300 text-light">Add Tool</span>
+                </button>
+              </form>
+            </div>
+          </dialog>
+        </div>
+      </div>
+    </section>
+    <main>
+      <div class="container pb-6">
+        <dialog data-remove-tool-confirmation-modal class="remove-tool-confirmation-modal p-4 shadow-xl rounded">
+          <div class="mb-6">
+            <h3 class="fs-400 mb-2">Remove tool</h3>
+            <p>Are you sure you want to remove this tool ?</p>
+          </div>
+
+          <div class="flex justify-end">
+            <button data-cancel class="btn-terciary-neutral text-blue rounded-sm shadow mr-2">Cancel</button>
+            <button data-confirm class="btn-primary-danger text-light rounded-sm shadow">Yes, remove</button>
+          </div>
+        </dialog>
+        
+        <div root class="flex flex-column">
+        </div>
+      </div>
+    </main>
+    <script type="module" src="./src/domain/tool.js"></script>
+    <script type="module" src="./src/index.js"></script>
+  </body>
+</html>
