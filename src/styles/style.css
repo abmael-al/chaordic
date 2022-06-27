@@ -603,3 +603,24 @@ a {
     block-size: 3.125rem; /* 50px */
   }
 }
+
+/* --------------- */
+/* SITE-SPECIFIC   */
+/* --------------- */
+/* dialog remove tool */
+.remove-tool-confirmation-modal {
+  width: min(80%, 30rem);
+}
+
+@media(max-width: 35em) {
+  /* it wraps both search-bar and checkbox */
+  .search-container {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  /* it wraps both the open-submit-modal button and the modal */
+  .submit-container {
+    align-items: start;
+  }
+}
