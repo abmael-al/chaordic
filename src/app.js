@@ -1,6 +1,24 @@
 import { CreateUtilityToolElement } from './application/create-tool';
 import { SubmitUtilityToolListener } from './application/submit-tool';
 import { SearchUtilityToolListener } from './application/search-tool';
+import { UtilityToolRemovalListener } from './application/delete-tool';
+import { ReadAll } from './domain/read-all';
+
+class InitialScreenLoader {
+    constructor(root) {
+        this.root = root;
+    }
+
+    async start() {
+        const items = await new ReadAll().read();
+
+        items.forEach(item => {
+            const uTool = new CreateUtilityToolElement().create(item);
+            
+            this.root.appendChild(uTool);
+        });
+    }
+} 
 
 class SubmitFunctionality {
     #form = document.querySelector('[data-submit-form]');
