@@ -1,4 +1,19 @@
 import { CreateUtilityToolElement } from './application/create-tool';
+import { UtilityToolRemovalListener } from './application/delete-tool';
+
+class RemovalFunctionality {
+    constructor(root) {
+        this.root = root;
+    }
+
+    start() {
+        new UtilityToolRemovalListener(this.root).listen(this.#callback.bind(this));
+    }
+
+    #callback(utilityTool) {
+        utilityTool.remove();
+    }
+}
 
 class UtilityToolRerender {
     async rerender(root, items) {
