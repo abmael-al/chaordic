@@ -1,5 +1,17 @@
 import { CreateUtilityToolElement } from './application/create-tool';
 
+class UtilityToolRerender {
+    async rerender(root, items) {
+        const loadedItems = new UtilityToolLoader().load(items);
+
+        this.#repopulateRoot(root, loadedItems);
+    }
+
+    #repopulateRoot(recipient, items) {
+        recipient.replaceChildren(...items);
+    }
+}
+
 class UtilityToolLoader {
     load(items) {
         const batch = [];
