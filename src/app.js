@@ -1,5 +1,38 @@
 import { CreateUtilityToolElement } from './application/create-tool';
+import { SubmitUtilityToolListener } from './application/submit-tool';
 import { SearchUtilityToolListener } from './application/search-tool';
+
+class SubmitFunctionality {
+    #form = document.querySelector('[data-submit-form]');
+
+    constructor(root) {
+        this.root = root;        
+    }
+
+    start() {
+        this.#modalControl();
+        new SubmitUtilityToolListener(this.#form).listen(this.#callback.bind(this));
+    }
+    
+    #modalControl() {
+        const modal = document.querySelector('[data-submit-modal]');
+        const openModal = document.querySelector('[data-open-submit-modal]');
+        const closeModal = document.querySelector('[data-close-submit-modal]');
+    
+        openModal.addEventListener('click', () => {
+            modal.showModal();
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.close();
+        });
+    }
+
+    #callback(item) {
+        const uTool = new CreateUtilityToolElement().create(item);
+        this.root.appendChild(uTool);
+    }
+}
 
 class SearchFunctionality {
     #checkbox = document.querySelector('[data-checkbox]');
