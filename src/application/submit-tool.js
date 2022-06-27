@@ -1,3 +1,26 @@
+import { CreateUtilityTool } from '../domain/create'; 
+
+export class UtilityToolSubmitHandler {
+    constructor(form) {
+        this.form = form;
+        this.inputFields = this.form.querySelectorAll('input');
+    }
+
+    async submit(callback) {
+        try {
+            const formData = new InputFieldsValuesFormater().format(this.inputFields);           
+            const item = await new CreateUtilityTool().post(formData);
+            
+            new InputFieldsCleaner().clean(this.inputFields);
+
+            callback(item);
+        }
+        catch(error) {
+            console.log(error);
+        }
+    }
+}
+
 class InputFieldsValuesFormater {
     format(inputFields) {
         const fields = Array.from(inputFields);
