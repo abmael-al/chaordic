@@ -1,5 +1,17 @@
 import { CreateUtilityTool } from '../domain/create'; 
 
+export class SubmitUtilityToolListener {  
+    constructor(form) {
+        this.form = form;
+    }
+
+    listen(callback) {  
+        this.form.addEventListener('submit', async () => {
+            new UtilityToolSubmitHandler(this.form).submit(callback);
+        });
+    }
+}
+
 export class UtilityToolSubmitHandler {
     constructor(form) {
         this.form = form;
