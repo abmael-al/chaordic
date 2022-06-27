@@ -1,5 +1,27 @@
 import { CreateUtilityToolElement } from './application/create-tool';
-import { UtilityToolRemovalListener } from './application/delete-tool';
+import { SearchUtilityToolListener } from './application/search-tool';
+
+class SearchFunctionality {
+    #checkbox = document.querySelector('[data-checkbox]');
+    #searchField = document.querySelector('[data-search-field]');
+    #searchForm = document.querySelector('[data-search-form]');
+
+    constructor(root) {
+        this.root = root;
+    }
+
+    start() {
+        new SearchUtilityToolListener(this.#searchField, this.#checkbox, this.#searchForm).listen(this.#callback.bind(this));
+    }
+
+    #callback(items) {
+        let hasFoundSomething = (items.length) ? true : false;
+
+        if(hasFoundSomething) {
+            new UtilityToolRerender().rerender(this.root, items);
+        }
+    }
+}
 
 class RemovalFunctionality {
     constructor(root) {
