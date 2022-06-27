@@ -4,6 +4,20 @@ import { SearchUtilityToolListener } from './application/search-tool';
 import { UtilityToolRemovalListener } from './application/delete-tool';
 import { ReadAll } from './domain/read-all';
 
+export class App {
+    #root = document.querySelector('[root]');
+    
+    start() { 
+        new InitialScreenLoader(this.#root).start();
+
+        new SubmitFunctionality(this.#root).start();
+
+        new SearchFunctionality(this.#root).start();
+        
+        new RemovalFunctionality(this.#root).start();
+    }
+}
+
 class InitialScreenLoader {
     constructor(root) {
         this.root = root;
