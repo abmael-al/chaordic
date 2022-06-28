@@ -8,15 +8,15 @@ class UtilityTool extends HTMLElement {
     #build() {
         this.shadow = this.attachShadow({ mode: 'open' });
 
-        const textElements = [
+        const wrapperElements = [
             this.#setTitle(),
-            this.#setDescription(),
-            this.#setTags()
+            this.#setDeleteButton(),
         ]
 
         const elements = [
-            this.#setWrapper(textElements),
-            this.#setDeleteButton(),
+            this.#setWrapper(wrapperElements),
+            this.#setDescription(),
+            this.#setTags(),
         ];
       
         this.shadow.appendChild(this.#style());
@@ -28,6 +28,14 @@ class UtilityTool extends HTMLElement {
 
         style.textContent = `
             .content {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .wrapper {
+                min-width: 100%;
+                
                 display: flex;
                 justify-content: space-between;
                 align-items: start;
@@ -88,6 +96,8 @@ class UtilityTool extends HTMLElement {
 
     #setWrapper(elements) {
         const wrapper = document.createElement('div');
+
+        wrapper.classList.add('wrapper');
 
         elements.forEach((element) => {
             wrapper.appendChild(element);
