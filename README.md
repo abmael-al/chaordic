@@ -1,6 +1,6 @@
 <!-- What is the project about -->
 # Introduction
-This is a challenge taken from the [Front-end Challenges](https://github.com/felipefialho/frontend-challengesrepository) repository.
+This is a challenge taken from the [Front-end Challenges](https://github.com/felipefialho/frontend-challenges) repository.
 
 For more context on the challenge itself you can take at [here](https://www.notion.so/Front-end-c12adcdbe7a1425dbfbcd5a397b4ff10).
 
